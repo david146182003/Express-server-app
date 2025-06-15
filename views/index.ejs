@@ -4,15 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body{
+            background-color:bisque;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <form action="">
+        
         <label>First Name
             <input type="text" name="firstName"  />
         </label>
+        <label>E-mail
+            <input type="text" name="email">
+        </label>
         <button type="submit">Submit</button>
     </form>
+    <ul>
+        <li>Name: <%= user.name  %>, Email : <%= user.email  %></li>
+    </ul>
+
+    
     
 </body>
 </html>
