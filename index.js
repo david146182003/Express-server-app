@@ -9,20 +9,6 @@ app.set("view engine", "ejs")
 
 app.use(express.json())
 
-app.get('/', (req, res)=>{
-    
-    res.render('index', {array})
-})
-
-app.post('/', (req, res)=>{
-    console.log(req.query)
-    console.log(req.params)
-    res.send('Submit name')
-})
-
-app.delete('/', (req, res)=>{
-    res.send('Delete name')
-})
 
 app.get('/user/:name/:email', (req, res)=>{
     console.log(req.params)
