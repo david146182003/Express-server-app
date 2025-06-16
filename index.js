@@ -29,12 +29,6 @@ app.get('/' , (req, res)=>{
     
 })
 
-app.post('/delete', (req, res)=>{
-    const index = req.body.index;
-    users.splice(index, 1);
-    res.render('index', {index})
-    res.redirect('/')
-})
 
 app.use('/users', usersRouter);
 
@@ -42,7 +36,7 @@ app.use('/posts', postRouter);
 
 app.use('/comments', comRouter)
 
-
+//middleware
 function userLogin(req, res, next){
     console.log(`User log in`);
     next()

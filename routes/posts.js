@@ -13,8 +13,38 @@ postRouter.get('/:id', (req,res)=>{
     res.send(userData[id-1].posts)
 })
 
-postRouter.post('/', (req, res)=>{
+postRouter.post('/:id', (req, res)=>{
+    let user = userData.find((u, i)=>{
+        if(u.id ===id){
+            
+        }
+    })
     res.send('post created!')
+})
+
+postRouter.patch('/:id', (req,res)=>{
+    const user = userData.find((u, i)=>{
+        if(u.id === req.params.id){
+            for(let key in req.body){
+                userData[i][key] = req.body[key]
+            }
+            return true
+        }
+    } )
+    if(user) res.json(user);
+})
+
+postRouter.delete('/:id/:indexPost', (req, res)=>{
+    let id = req.params.id;
+    let indexOfPost = req.params.indexPost
+    let user = userData.find((u, i)=>{
+        if(u.id ===id){
+            userData.splice(i,1);
+            return true
+        }
+    })
+    if(user) res.json(user);
+    res.send('post deleted!')
 })
 
 
