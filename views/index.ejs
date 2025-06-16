@@ -23,7 +23,10 @@
         <button type="submit">Submit</button>
     </form>
     <ul>
-        <li>Name: <%= user.name  %>, Email : <%= user.email  %></li>
+        <% users.forEach(user => { %>
+            <li>Name: <%= user.name  %>, Email : <%= user.email  %> <button onclick="">Delete</button></li>
+        <% }) %>
+        
     </ul>
 
     
