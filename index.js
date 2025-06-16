@@ -2,6 +2,7 @@ import express from 'express'
 import usersRouter from './routes/users.js';
 import postRouter from './routes/posts.js';
 import comRouter from './routes/comments.js';
+import { userData } from './data.js';
 
 const app =express();
 const port = 3000;
@@ -45,6 +46,9 @@ app.use('/comments', comRouter)
 function userLogin(req, res, next){
     console.log(`User log in`);
     next()
+}
+function errorHandling(err, req, res, next){
+    
 }
 
 
