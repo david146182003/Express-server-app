@@ -1,5 +1,7 @@
 import express from 'express'
 import usersRouter from './routes/users.js';
+import postRouter from './routes/posts.js';
+import comRouter from './routes/comments.js';
 
 const app =express();
 const port = 3000;
@@ -26,12 +28,13 @@ app.get('/' , (req, res)=>{
     
 })
 
-app.use('/users', usersRouter)
+app.use('/users', usersRouter);
 
-app.post('/user/:id/:name', (req, res)=>{
-    
-    res.render('index', {users})
-})
+app.use('/posts', postRouter);
+
+app.use('/comments', comRouter)
+
+
 
 // app.post('/user/:userId/:name', (req, res)=>{
 //     const userId = req.params.userId;
