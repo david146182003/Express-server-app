@@ -5,12 +5,22 @@ const postRouter = express.Router()
 
 
 postRouter.get('/', (req, res)=>{
-    res.send('Post list')
+    let posts = [];
+    for(let i=0;i<userData.length;i++){
+        let post = userData[i].posts;
+        posts.push(post);
+    }
+    res.send(posts)
 })
 
-postRouter.get('/:id', (req,res)=>{
+postRouter.get('/:id', (req,res,next)=>{
     let id = req.params.id
-    res.send(userData[id-1].posts)
+    if(Number(id) <=userData.length){
+        res.send(userData[id-1].posts)
+    }else{
+        next()
+    }
+    
 })
 
 postRouter.post('/:id', (req, res)=>{
@@ -46,6 +56,11 @@ postRouter.delete('/:id/:indexPost', (req, res)=>{
     if(user) res.json(user);
     res.send('post deleted!')
 })
+
+function error(req, res){
+    res.send('wrong id')
+}
+postRouter.use(error)
 
 
 export default postRouter
