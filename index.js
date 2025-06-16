@@ -13,6 +13,8 @@ app.use(express.json())
 
 const users = [];
 
+app.use(userLogin)
+
 app.get('/' , (req, res)=>{
     console.log(req.params)
     console.log(req.query)
@@ -21,11 +23,16 @@ app.get('/' , (req, res)=>{
         name: req.query.firstName,
         email: req.query.email
     }
-    users.push(user)
-    console.log(user)
-    console.log(users)
+    users.push(user);
     res.render('index', {users})
     
+})
+
+app.post('/delete', (req, res)=>{
+    const index = req.body.index;
+    users.splice(index, 1);
+    res.render('index', {index})
+    res.redirect('/')
 })
 
 app.use('/users', usersRouter);
@@ -35,16 +42,11 @@ app.use('/posts', postRouter);
 app.use('/comments', comRouter)
 
 
+function userLogin(req, res, next){
+    console.log(`User log in`);
+    next()
+}
 
-// app.post('/user/:userId/:name', (req, res)=>{
-//     const userId = req.params.userId;
-//     const userName = req.params.name;
-//     let user ={
-//         id : userId,
-//         name : userName
-//     }
-//     res.json(user)
-// })
 
 app.listen(port, ()=>{
     console.log(`server is running at ${port}`)

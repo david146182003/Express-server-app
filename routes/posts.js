@@ -11,5 +11,9 @@ postRouter.get('/:num', (req,res)=>{
     res.send(`post num: ${req.params.num}`)
 })
 
+postRouter.post('/', (req, res)=>{
+    res.send('post created!')
+})
+
 
 export default postRouter
