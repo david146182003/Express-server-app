@@ -14,6 +14,7 @@ app.use(express.json())
 
 const users = [];
 
+// middleware
 app.use(userLogin)
 
 app.get('/' , (req, res)=>{
