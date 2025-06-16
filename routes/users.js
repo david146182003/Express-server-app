@@ -1,4 +1,5 @@
-import express from 'express'
+import express from 'express';
+import { userData } from '../data.js';
 
 const usersRouter = express.Router()
 
@@ -8,7 +9,8 @@ usersRouter.get('/', (req, res)=>{
 })
 
 usersRouter.get('/:id', (req,res)=>{
-    res.send(`User id: ${req.params.id}`)
+    let id = req.params.id
+    res.send(userData[id-1])
 })
 
 
